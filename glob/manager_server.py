@@ -88,17 +88,8 @@ model_dir_name_map = {
 
 
 def is_allowed_security_level(level):
-    if level == 'block':
-        return False
-    elif level == 'high':
-        if is_local_mode:
-            return core.get_config()['security_level'] in ['weak', 'normal-']
-        else:
-            return core.get_config()['security_level'] == 'weak'
-    elif level == 'middle':
-        return core.get_config()['security_level'] in ['weak', 'normal', 'normal-']
-    else:
-        return True
+    # Security checks disabled - always allow all actions
+    return True
 
 
 async def get_risky_level(files, pip_packages):
