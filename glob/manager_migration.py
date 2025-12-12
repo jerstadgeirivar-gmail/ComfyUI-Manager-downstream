@@ -343,6 +343,7 @@ def _migrate_config_with_security_check(legacy_path, new_path):
 
 def force_security_level_if_needed(config_dict):
     """Force security level to 'strong' if on old ComfyUI.
+    DISABLED: Security level is now hardcoded to 'weak' in manager_core.py
 
     Args:
         config_dict: Configuration dictionary to modify in-place
@@ -350,7 +351,5 @@ def force_security_level_if_needed(config_dict):
     Returns:
         bool: True if security level was forced
     """
-    if not has_system_user_api():
-        config_dict['security_level'] = 'strong'
-        return True
+    # Disabled - security_level is hardcoded to 'weak'
     return False

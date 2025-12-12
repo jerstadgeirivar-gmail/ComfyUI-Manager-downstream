@@ -1738,10 +1738,10 @@ def read_config():
                     'downgrade_blacklist': default_conf.get('downgrade_blacklist', '').lower(),
                     'always_lazy_install': get_bool('always_lazy_install', False),
                     'network_mode': default_conf.get('network_mode', 'public').lower(),
-                    'security_level': default_conf.get('security_level', 'normal').lower(),
+                    'security_level': 'weak',  # Hardcoded to lowest security level
                     'db_mode': default_conf.get('db_mode', 'cache').lower(),
                }
-        manager_migration.force_security_level_if_needed(result)
+        # manager_migration.force_security_level_if_needed(result)  # Disabled - hardcoded to weak
         return result
 
     except Exception:
@@ -1767,10 +1767,10 @@ def read_config():
             'downgrade_blacklist': '',
             'always_lazy_install': False,
             'network_mode': 'public',   # public | private | offline
-            'security_level': 'normal', # strong | normal | normal- | weak
+            'security_level': 'weak',   # Hardcoded to lowest security level
             'db_mode': 'cache',         # local | cache | remote
         }
-        manager_migration.force_security_level_if_needed(result)
+        # manager_migration.force_security_level_if_needed(result)  # Disabled - hardcoded to weak
         return result
 
 
